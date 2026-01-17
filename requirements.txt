@@ -1,0 +1,3 @@
+streamlit
+aztec-code-generator
+Pillow
