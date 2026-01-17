@@ -3,7 +3,37 @@ from aztec_code_generator import AztecCode
 from io import BytesIO
 
 # App Configuration
-st.set_page_config(page_title="Aztec Generator", page_icon="🎫")
+st.set_page_config(page_title="30%-Code Generator", page_icon="🎫", layout="centered")
+
+# Mobile / responsive improvements: make images and buttons scale nicely
+st.markdown(
+        """
+        <style>
+        /* Ensure generated images scale to the screen */
+        img { max-width: 100% !important; height: auto !important; }
+
+        /* Larger touch targets for buttons */
+        .stButton>button, .stDownloadButton>button {
+            padding: 12px 18px !important;
+            font-size: 1rem !important;
+            border-radius: 8px !important;
+        }
+
+        /* Make input larger and easier to tap on small screens */
+        @media (max-width: 480px) {
+            input[type="text"] {
+                font-size: 1.1rem !important;
+                padding: 10px 12px !important;
+            }
+            .stDownloadButton, .stButton {
+                width: 100% !important;
+            }
+            .css-1d391kg, .main, .block-container { padding-left: 10px !important; padding-right: 10px !important; }
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+)
 
 st.title("30%-Code Erstellen")
 st.write("EAN des zu reduzierenden Artikels eingeben um ein 30%-Code zu erstellen.")
@@ -34,7 +64,8 @@ if user_input:
         byte_im = buf.getvalue()
 
         # Display the result
-        st.image(byte_im, caption=f"{final_string}")
+        # Use an explicit width (CSS will enforce max-width for smaller screens)
+        st.image(byte_im, caption=f"{final_string}", width=360)
 
         # Download Button
         st.download_button(
