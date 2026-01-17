@@ -3,9 +3,9 @@ from aztec_code_generator import AztecCode
 from io import BytesIO
 
 # App Configuration
-st.set_page_config(page_title="30%-Etikett Generator", page_icon="🎫")
+st.set_page_config(page_title="REWE 30%-Etikett Generator", page_icon="🎫")
 
-st.title("30%-Code Erstellen")
+st.title("REWE 30%-Code Erstellen")
 st.write("EAN des zu reduzierenden Artikels eingeben um ein 30%-Code zu erstellen.")
 
 # User Input
